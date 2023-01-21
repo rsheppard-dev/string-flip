@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Coding Challenge Template</title>
+		<title>String Flip</title>
 
 		<!-- bootstrap -->
 		<link
@@ -31,52 +31,32 @@
 					aria-label="Close"
 				></button>
 			</div>
-			<h3 class="h4 text-dark mb-4 font-primary">Input Values:</h3>
-			<div class="row g-3">
+			<h3 class="h4 text-dark mb-4 font-primary">Input Value:</h3>
+			<form class="row g-3">
 				<div class="col-12 col-sm-6">
-					<label for="startValue" class="form-label font-secondary"
-						>Start Value:</label
+					<label for="string" class="form-label font-secondary"
+						>Enter a String:</label
 					>
 					<input
-						type="number"
-						id="startValue"
-						name="startValue"
+						type="text"
+						id="string"
+						name="string"
 						class="form-control"
-						aria-label="Start Value"
-						value="0"
+						aria-label="Enter a String"
 					/>
 				</div>
-				<div class="col-12 col-sm-6">
-					<label for="endValue" class="form-label font-secondary"
-						>End Value:</label
-					>
-					<input
-						type="number"
-						id="endValue"
-						name="endValue"
-						class="form-control"
-						aria-label="End Value"
-						value="100"
-					/>
-				</div>
+
 				<div>
-					<button id="submit" class="btn btn-warning my-2">
-						Generate Numbers
-					</button>
+					<button id="submit" class="btn btn-warning my-2">Flip String</button>
 				</div>
 				<div id="error" class="d-none text-bg-danger p-3 rounded"></div>
-			</div>
+			</form>
 
 			<hr />
 
-			<h3 class="h4 text-dark my-4">View Results:</h3>
+			<h3 class="h4 text-dark my-4">View Result:</h3>
 
-			<div class="table-responsive">
-				<table class="table table-striped">
-					<tbody id="results"></tbody>
-				</table>
-			</div>
-		</div>
+			<div id="result"></div>
 
 		<script type="module" src="/src/main.ts"></script>
 		<script type="module" src="/src/close.ts"></script>

@@ -1,74 +1,56 @@
 import './style.css';
 
-// function to get values from user interface
-const getValues = (e: Event): void => {
-	// prevent default form behaviour (page refresh)
+// function to get string from user interface
+const getString = (e: Event): void => {
 	e.preventDefault();
 
-	// get elements from html page
-	const startValueInput = document.getElementById(
-		'startValue'
-	) as HTMLInputElement;
-	const endValueInput = document.getElementById('endValue') as HTMLInputElement;
+	// get html elements
+	const stringInput = document.getElementById('string') as HTMLInputElement;
 	const errorBox = document.getElementById('error') as HTMLDivElement;
 
-	// get values from inputs and parse to integers
-	const startValue = parseInt(startValueInput.value);
-	const endValue = parseInt(endValueInput.value);
+	// get value from input
+	const string = stringInput.value;
 
-	// check values entered by user are valid numbers
-	if (Number.isInteger(startValue) && Number.isInteger(endValue)) {
-		// call generateNumbers function with input values
-		const numbers = generateNumbers(startValue, endValue);
+	// confirm user input a valid string
+	if (typeof string === 'string' && string !== '') {
+		// remove error if one exists
+		if (!errorBox.classList.contains('d-none')) {
+			errorBox.classList.add('d-none');
+		}
+		// call function to flip string
+		const flippedString = flipString(string);
 
-		// call displayNumbers function
-		displayNumbers(numbers);
+		// call function to display flipped string
+		displayFlippedString(flippedString);
 	} else {
-		// display error on page if invalid input
-		errorBox.innerText = 'You can only enter numbers in the inputs above.';
+		// display error box if invalid input entered by user
+		errorBox.innerText = 'You must enter a string in the input above!';
 		errorBox.classList.remove('d-none');
 	}
 };
 
-// function to generate numbers between startValue and endValue
-const generateNumbers = (startValue: number, endValue: number): number[] => {
-	const numbers: number[] = [];
+// function to reverse a string
+const flipString = (string: string): string => {
+	const flippedString = string
+		.split('') // convert item to array of characters
+		.reverse() // use array method to reverse the array
+		.join(''); // rejoin the characters into a string
 
-	// loop through all numbers from startValue to endValue
-	for (let i = startValue; i <= endValue; i++) {
-		// add current number to end of numbers array
-		numbers.push(i);
-	}
-
-	return numbers;
+	// return new reversed string
+	return flippedString;
 };
 
-// function to display number range
-const displayNumbers = (numbers: number[]): void => {
-	// get table body from html document
-	const tableBody = document.getElementById(
-		'results'
-	) as HTMLTableSectionElement;
+// function to display reversed string
+const displayFlippedString = (flippedString: string): void => {
+	// get html element
+	const result = document.getElementById('result') as HTMLDivElement;
 
-	let templateRows = '';
-
-	// loop through all the numbers
-	for (let i = 0; i < numbers.length; i++) {
-		const number = numbers[i];
-
-		// check if current number is even or odd and assign correct class
-		const className = number % 2 === 0 ? 'even' : 'odd';
-
-		// update template rows
-		templateRows += `<tr><td class="${className}">${number}<td></tr>`;
-	}
-
-	// update html in table body
-	tableBody.innerHTML = templateRows;
+	// inset result into result box
+	result.innerText = flippedString;
 };
 
 // get button element
 const submitButton = document.getElementById('submit') as HTMLButtonElement;
 
 // create event listener for when user clicks button
-submitButton.addEventListener('click', getValues);
+submitButton.addEventListener('click', getString);

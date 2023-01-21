@@ -1,10 +1,10 @@
-# Coding Challenge Name
+# String Flip
 
 ## A Coding Challenge
 
 ### Challenge
 
-Explain the challenge here.
+Create a program to accept a string, reverse it and display the result.
 
 ### Features
 
@@ -14,4 +14,4 @@ Explain the challenge here.
 
 ### The Tech Stack
 
-HTML5, CSS3, BootStrap 5, TypeScript
+HTML5, CSS3, BootStrap, TypeScript
