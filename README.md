@@ -8,9 +8,13 @@ Create a program to accept a string, reverse it and display the result.
 
 ### Features
 
-- List
-- the
-- features
+- Array Methods
+- Arrow Functions
+- CSS and BootStrap Layout
+- DOM Manipulation
+- Event Listeners
+- If/Else Statements
+- String Methods
 
 ### The Tech Stack
 
